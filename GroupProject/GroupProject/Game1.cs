@@ -137,10 +137,9 @@ namespace GroupProject
             spriteBatch.Begin(transformMatrix: transformMatrix);
 
             map.Draw(spriteBatch);
-            spriteBatch.End();
-
-            spriteBatch.Begin();
+            
             player.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
