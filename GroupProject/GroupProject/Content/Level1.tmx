@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" nextobjectid="29">
+ <tileset firstgid="1" name="Tileset" tilewidth="64" tileheight="64" tilecount="72" columns="8">
+  <image source="Castle Tileset.png" width="512" height="576"/>
+ </tileset>
+ <layer name="background" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmU2OwyAMhbPNoosuepAZNSeg9z/TqFKRPG/8jM1PQjtZPCkFB/vDDoF0XZZlfWl7aVWktTPbWjtmH/V9cpwcvTmuH8Rh9ddyXJ12J0esBt6FI0F/ahhrhnyU+KLxzcLB7qvlwDzj79Ec6Dcyzx67ZNiP4IjmIwV9avYjOTT/SVz3HHtPjlGS+UlC78Zx6tQs8q4zvdejXvLuDT3r+pFxP39r+3Y8V21ga7GMzhl7p/TiGHVG9NZPT47N8Jfvx3G9bKXvC6M4MMYSB46XyDXqDtrg+giOmpp7xvsgLKM4tLx7apLVSdaF2N4Vf7NwMN/MPucoLX/ngZ0V9uLwtiOLvJZtyBXhSAV77RzM4r0UWDB2xrSXsm/2fETXiaM4pNhz3vKePVq4XmHNHx1fi0bkpfYdN4KF7RO076qWLfYzH1K3yfJSK8kxU1zeOss2M3NE7P4bh7bvlf17fO9kdtvye31gsTwa/HhYLd+9eK37rT1OhCOrtGfSfLA4ZDvWnZw77z64dX/H5ry0h8f2W2GcXrmOjlfL8aXMnzaHtd/t9+RAu+gZMsKhnQm12o08Hx4OlqtSTVpzgTF57ivlQ9aNJx+e8bX/kNjZ9ruRw6qD3s96Sx1a/T8Cv7qW
+  </data>
+ </layer>
+ <layer name="collums" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmcuOwzAIRfmSLj27eD///2Gj0bQSQlzwAzvxiCtFcbADHD9auyUi+hJXoT9xGwk7KW3JKBcQQ/pDsYpox9twP8nxfI56IAfPmdfX93UKxydnGYNrFUdlbWc4Kivv4KggxiwHyhfZef/1csg5ylUpluMCdm0cPQ6eNx93lANaiyMcSNp7cox4HOtd1Fey/QoOLTaa5y3tLGkcVbFFCc1zKa//kV9tPe3iWOFX+5yOjN3bz6N+rbV5krT+WtWHqVQqtUPFKFvPsv3dSg79uYUNxZzRBcqzHFZ7jWPlfi2KA92lbQXLpcTbxWHxjLBa80zz+VQOrov8PfUJHJokF2eVZe0ubVq9FzOV2qXX3QkE6Un7pRklx7PkcUSun5VrsfU35AjdOfb/hSNyT5D7iz7t/E60YqG61vys+TvCaL0zsk+PWF8jPkbPFD0cWl8VYPfi9uYz6u9X3w1+os/9vb4+fdgzHh6HHBdrrJCss72VUw8H+s8HnTO1s7onzYcXH9VZ9lP1Ay9dRX0=
+  </data>
+ </layer>
+ <layer name="Collisions" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmM9OwzAMxn3uOMFOMHGA43gBoOX9Hwss1ZJl7MRJ0/yp+kmWti51v18dp+kAxtfjX1xbmyigk6MvnRx96eToS0fj+DLioZ21JMXqscA+PFPhvN55VYqH/M+F86b2R+51pf9SeUm5fe69bsx/bl6presVXdcKr38rr5en93U3dp9+1nG9c3h1cvSlI3J8wv/+oeP8O40BcR4fU1O4to9eD2R4hv04ZA1D47Q54BExvECdemhMr5HxMXGGWhxcIf9cIRbJQBzWM7P1uwefc3Kv876Gpx7I15olJmLxvEeNwMI5LL8jsHCOkN9ee4gk51XqvY/tq2uExpHD0oOsPh+NBTluoHseiYXqUZNlKpwPRRwUmnJYLK+0p+B6c+YMjeMcVk1QqevSnHjcE5o3vC+XNe8V4jXpQR/KMawD7bGOyKHNn17WLC/HYpwf6pua8nJYusP2/dUkPuf0t+ZhXv3dIVyLmLzr2Cw+p8jbsz33NiqHw3qXbPXfFOoo9fDMXVQKh1avrbXScuasj6Xq8a0c4+tUirccT3vNK7knlM+h0L43xxPmv+wQyPAk4iZ+t85dMq73C10wSBQ=
+  </data>
+ </layer>
+ <layer name="spikes" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1NENwCAIBUCWY/+VukBJ64eB1rsvE0x8oiECAKhkd4ChpvRlV46u+709dzVf93vlgAxfoVcAAADwL1ms7/ZV9XyoA+fK6J8R5hOn8M/pZt6uuQCIUwdI
+  </data>
+ </layer>
+ <layer name="ladder" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1jEOwCAMBEF+QMn/fxrRWQgrDRJ3ZqdKmQ12ktYAAAAAqOq3b+CQcfsGDqFDS+xw3pWRXDujQwsdQM75+xFV2Q/njjhLzh1V/kvWDtddX8/AtWU3S47zlXW4nUn27B3PZIcOvMLt3ZOpMut0aPnrYH+00KGlSsf0AcopA60=
+  </data>
+ </layer>
+ <objectgroup color="#a00000" name="enemies">
+  <object id="1" x="2212.12" y="3103.03"/>
+  <object id="2" x="2378.79" y="2915.15"/>
+  <object id="3" x="2833.33" y="3090.91"/>
+  <object id="4" x="306.061" y="2784.85"/>
+  <object id="6" x="1145.45" y="2642.42"/>
+  <object id="7" x="1387.88" y="2645.45"/>
+  <object id="8" x="2018.18" y="2569.7"/>
+  <object id="9" x="2221.21" y="2572.73"/>
+  <object id="10" x="2854.55" y="2839.39"/>
+  <object id="11" x="803.03" y="2566.67"/>
+  <object id="12" x="2263.64" y="2266.67"/>
+  <object id="13" x="2812.12" y="1866.67"/>
+  <object id="14" x="2430.3" y="1857.58"/>
+  <object id="15" x="2042.42" y="1860.61"/>
+  <object id="16" x="1781.82" y="1854.55"/>
+  <object id="17" x="1503.03" y="1845.45"/>
+  <object id="18" x="1284.85" y="1845.45"/>
+  <object id="19" x="936.364" y="1787.88"/>
+  <object id="20" x="812.121" y="1778.79"/>
+  <object id="21" x="2560.61" y="1560.61"/>
+  <object id="22" x="2657.58" y="1545.45" width="6.06061"/>
+  <object id="23" x="272.727" y="1539.39"/>
+  <object id="24" x="451.515" y="530.303"/>
+  <object id="25" x="318.182" y="515.152"/>
+  <object id="26" x="2100" y="663.636"/>
+  <object id="27" x="1396.97" y="830.303"/>
+ </objectgroup>
+ <objectgroup color="#00a000" name="goal">
+  <object id="28" x="115.152" y="542.424"/>
+ </objectgroup>
+</map>
