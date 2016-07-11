@@ -17,6 +17,7 @@ namespace GroupProject
         Game1 game = null;
         bool isFalling = true;
         bool isJumping = false;
+        public bool istouchingladder = false;
 
         Vector2 velocity = Vector2.Zero;
        
