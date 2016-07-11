@@ -37,10 +37,28 @@ namespace GroupProject
         {
             AnimatedTexture animation = new AnimatedTexture(new Vector2(0,0), 0, 0.2f, 1);
             animation.Load(content, "soldier", 6, 5);
-            sprite.Add(animation, 0, -25);            sprite.Pause();            
+            sprite.Add(animation, 0, -25);            sprite.Pause();
+
+            AnimatedTexture animation2 = new AnimatedTexture(new Vector2(0, 0), 0, 0.15f, 1);
+            animation2.Looping = false;
+            animation2.Load(content, "knife", 4, 5);
+            sprite.Add(animation2, 0, -20);
+
+            
         }
         public void Update(float deltaTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) == true)
+            {
+                sprite.currentAnimation = 1;
+                sprite.Play();
+            }
+
+            if  (sprite.currentAnimation == 1 && sprite.IsPaused())
+            {
+                sprite.currentAnimation = 0;
+            }
+
             UpdateInput(deltaTime);
             sprite.Update(deltaTime);
         }
