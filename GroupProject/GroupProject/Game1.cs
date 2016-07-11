@@ -213,5 +213,6 @@ namespace GroupProject
             TiledTile tile = collisionLayer.GetTile(tx, ty);
             return tile.Id;
         }
+      
     }
 }
