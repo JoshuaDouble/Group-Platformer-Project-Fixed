@@ -181,6 +181,11 @@ namespace GroupProject
             // player is now falling or not. We can do that by looking to see if
             // there is a platform below them
             this.isFalling = !(celldown || (nx && celldiag));
+
+           //if (velocity.X == 0)
+           // {
+           //    sprite animation Pause();
+           // }
         }
     }
 }
