@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+
 namespace GroupProject
 {
     class Sprite
@@ -17,7 +16,7 @@ namespace GroupProject
         Texture2D texture;
         List<AnimatedTexture> animations = new List<AnimatedTexture>();
         List<Vector2> animationOffsets = new List<Vector2>();
-        int currentAnimation = 0;
+        public int currentAnimation = 0;
         SpriteEffects effects = SpriteEffects.None;
 
         public Sprite()
@@ -56,7 +55,10 @@ namespace GroupProject
         {
             animations[currentAnimation].Play();
         }
-
+        public bool IsPaused()
+        {
+            return animations[currentAnimation].IsPaused;
+        }
     }
 }
 
