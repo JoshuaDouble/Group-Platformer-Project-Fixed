@@ -37,7 +37,7 @@ namespace GroupProject
         {
             AnimatedTexture animation = new AnimatedTexture(new Vector2(0,0), 0, 0.2f, 1);
             animation.Load(content, "soldier", 6, 5);
-            sprite.Add(animation, 0, -5);            //sprite.position = new Vector2;
+            sprite.Add(animation, 0, -25);            //sprite.position = new Vector2;
         }
         public void Update(float deltaTime)
         {
