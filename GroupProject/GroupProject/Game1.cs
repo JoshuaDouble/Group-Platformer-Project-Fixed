@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Maps.Tiled;
-using MonoGame.Extended.ViewportAdapters;using System;
+using MonoGame.Extended.ViewportAdapters;using System;using System.Collections.Generic;
 
 namespace GroupProject
 {
@@ -23,6 +23,9 @@ namespace GroupProject
         TiledTileLayer spikes;
         TiledTileLayer Collums;
         TiledTileLayer Ladder;
+
+        List<Robot> robots = new List<Robot>();
+        Sprite goal = null;
 
         public static int tile = 64;
         // abitrary choice for 1m (1 tile = 1 meter)
@@ -96,6 +99,33 @@ namespace GroupProject
             {
                 if (layer.Name == "Collisions")
                     collisionLayer = layer;
+            }
+
+            foreach (TiledObjectGroup group in map.ObjectGroups)
+            {
+                if (group.Name == "Robot")
+                {
+                    foreach (TiledObject obj in group.Objects)
+                    {
+                        Robot robot = new Robot(this);
+                        robot.Load(Content);
+                        robot.Position = new Vector2(obj.X, obj.Y);
+                        robots.Add(robot);
+                    }
+                }
+                if (group.Name == "goal")
+                {
+                    TiledObject obj = group.Objects[0];
+                    if (obj != null)
+                    {
+                        AnimatedTexture anim = new AnimatedTexture(
+                        new Vector2(0, 0), 0, 0.5f , 1);
+                        anim.Load(Content, "goal", 1, 1);
+                        goal = new Sprite();
+                        goal.Add(anim, 0, -85);
+                        goal.position = new Vector2(obj.X, obj.Y);
+                    }
+                }
             }
 
             // TODO: use this.Content to load your game content here
@@ -124,6 +154,11 @@ namespace GroupProject
             player.Update(deltaTime);
             camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
 
+            foreach (Robot e in robots)
+            {
+                e.Update(deltaTime);
+            }
+
             base.Update(gameTime);
         }
 
@@ -136,9 +171,14 @@ namespace GroupProject
 
             spriteBatch.Begin(transformMatrix: transformMatrix);
 
-            map.Draw(spriteBatch);
-            
+            map.Draw(spriteBatch);            foreach (Robot e in robots)
+            {
+                e.Draw(spriteBatch);
+            }
+
             player.Draw(spriteBatch);
+
+            goal.Draw(spriteBatch);
 
             spriteBatch.End();
 

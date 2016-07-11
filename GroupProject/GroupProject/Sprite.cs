@@ -35,6 +35,16 @@ namespace GroupProject
         {
             animations[currentAnimation].UpdateFrame(deltaTime);
         }
+
+        public Rectangle Bounds
+        {
+            get
+            {
+                return new Rectangle(new Point((int)position.X, (int)position.Y),
+                animations[currentAnimation].FrameSize);
+            }
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             animations[currentAnimation].DrawFrame(spriteBatch,
