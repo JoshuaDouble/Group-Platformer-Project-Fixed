@@ -37,7 +37,7 @@ namespace GroupProject
         {
             AnimatedTexture animation = new AnimatedTexture(new Vector2(0,0), 0, 0.2f, 1);
             animation.Load(content, "soldier", 6, 5);
-            sprite.Add(animation, 0, -25);            //sprite.position = new Vector2;
+            sprite.Add(animation, 0, -25);            sprite.Pause();            
         }
         public void Update(float deltaTime)
         {
@@ -59,6 +59,8 @@ namespace GroupProject
             if (Keyboard.GetState().IsKeyDown(Keys.Left) == true)
             {
                 acceleration.X -= Game1.acceleration;
+                sprite.SetFlipped(true);
+                sprite.Play();
             }
             else if (wasMovingLeft == true)
             {
@@ -67,6 +69,8 @@ namespace GroupProject
             if (Keyboard.GetState().IsKeyDown(Keys.Right) == true)
             {
                 acceleration.X += Game1.acceleration;
+                sprite.SetFlipped(false);
+                sprite.Play();
             }
             else if (wasMovingRight == true)
             {
@@ -89,9 +93,9 @@ namespace GroupProject
 
             if ((wasMovingLeft && (velocity.X > 0)) ||
                 (wasMovingRight && (velocity.X < 0)))
-            {
-                // clamp at zero to prevent friction from making us jiggle side to side
+            {              
                 velocity.X = 0;
+                sprite.Pause();
             }
 
             int tx = game.PixelToTile(sprite.position.X);
@@ -141,6 +145,7 @@ namespace GroupProject
                     // we just hit
                     sprite.position.X = game.TileToPixel(tx);
                     this.velocity.X = 0; // stop horizontal velocity
+                    sprite.Pause();
                 }
             }
             else if (this.velocity.X < 0)
@@ -151,6 +156,7 @@ namespace GroupProject
                     // we just hit
                     sprite.position.X = game.TileToPixel(tx + 1);
                     this.velocity.X = 0; // stop horizontal velocity
+                    sprite.Pause();
                 }
             }
             // The last calculation for our update() method is to detect if the
