@@ -18,6 +18,8 @@ namespace GroupProject
         List<AnimatedTexture> animations = new List<AnimatedTexture>();
         List<Vector2> animationOffsets = new List<Vector2>();
         int currentAnimation = 0;
+        SpriteEffects effects = SpriteEffects.None;
+
         public Sprite()
         {
         }
@@ -37,8 +39,24 @@ namespace GroupProject
         public void Draw(SpriteBatch spriteBatch)
         {
             animations[currentAnimation].DrawFrame(spriteBatch,
-            position + animationOffsets[currentAnimation]);
+            position + animationOffsets[currentAnimation], effects);
         }
+        public void SetFlipped(bool state)
+        {
+            if (state == true)
+                effects = SpriteEffects.FlipHorizontally;
+            else
+                effects = SpriteEffects.None;
+        }
+        public void Pause()
+        {
+            animations[currentAnimation].Pause();
+        }
+        public void Play()
+        {
+            animations[currentAnimation].Play();
+        }
+
     }
 }
 
