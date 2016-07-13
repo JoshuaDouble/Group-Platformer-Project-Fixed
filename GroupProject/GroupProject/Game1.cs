@@ -191,11 +191,12 @@ namespace GroupProject
                 e.Draw(spriteBatch);
             }
 
-        
             player.Draw(spriteBatch);
-
             goal.Draw(spriteBatch);
 
+            spriteBatch.End();
+
+            spriteBatch.Begin();
             for (int i = 0; i < score; i++)
             {
                 spriteBatch.Draw(medal, new Vector2(10 + i * 10,
