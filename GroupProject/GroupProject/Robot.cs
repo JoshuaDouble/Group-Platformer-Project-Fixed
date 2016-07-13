@@ -63,6 +63,8 @@ namespace GroupProject
                     if (celldiag && !cellright)
                     {
                         ddx = ddx + robotAcceleration; // zombie wants to go right
+                        sprite.SetFlipped(false);
+                        sprite.Play();
                     }
                     else {
                         this.velocity.X = 0;
@@ -75,6 +77,8 @@ namespace GroupProject
                     if (celldown && !cell)
                     {
                         ddx = ddx - robotAcceleration; // zombie wants to go left
+                        sprite.SetFlipped(true);
+                        sprite.Play();
                     }
                     else {
                         this.velocity.X = 0;
