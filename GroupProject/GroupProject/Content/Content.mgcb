@@ -91,3 +91,9 @@
 /processorParam:TextureFormat=Color
 /build:Medal.png
 
+#begin Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Arial.spritefont
+

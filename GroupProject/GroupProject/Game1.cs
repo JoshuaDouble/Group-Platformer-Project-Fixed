@@ -27,6 +27,10 @@ namespace GroupProject
         TiledTileLayer Collums;
         TiledTileLayer Ladder;
 
+        const int STATE_SPLASH = 0;
+        const int STATE_GAME = 1;
+        const int STATE_GAMEOVER = 2;
+        int gameState = STATE_SPLASH;
         int score = 4;
         Texture2D medal = null;
 
