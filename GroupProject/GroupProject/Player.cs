@@ -71,6 +71,10 @@ namespace GroupProject
             sprite.Draw(spriteBatch);
         }
 
+        public bool isAttacking()
+        {
+            return (sprite.currentAnimation == 1);
+        }
 
         private void UpdateInput(float deltaTime)
         {
@@ -99,9 +103,10 @@ namespace GroupProject
             {
                 acceleration.X -= Game1.friction;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Up) == true &&
-           this.isJumping == false && falling == false)
+            if ((Keyboard.GetState().IsKeyDown(Keys.Up) == true &&
+           this.isJumping == false && falling == false)|| autoJump == true)
             {
+                autoJump = false;
                 acceleration.Y -= Game1.jumpImpulse;
                 this.isJumping = true;
             }
@@ -193,6 +198,24 @@ namespace GroupProject
            // {
            //    sprite animation Pause();
            // }
+        }
+
+        bool autoJump = true;
+        public Vector2 Velocity
+        {
+            get { return velocity; }
+        }
+        public Rectangle Bounds
+        {
+            get { return sprite.Bounds; }
+        }
+        public bool IsJumping
+        {
+            get { return isJumping; }
+        }
+        public void JumpOnCollision()
+        {
+            autoJump = true;
         }
     }
 }

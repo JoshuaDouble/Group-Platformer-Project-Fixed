@@ -79,12 +79,46 @@ namespace GroupProject
 
         private void CheckCollisions()
         {
-            bool hasCollidedEnemies = false;
-            foreach (Robot e in Robots)
+            List<Robot> deadRobots = new List<Robot>();
+            foreach (Robot e in robots)
             {
-
+                if (IsColliding(player.Bounds, e.Bounds) == true)
+                {
+                    if (player.IsJumping && player.Velocity.Y > 0)
+                    {
+                        player.JumpOnCollision();
+                        deadRobots.Add(e);
+                    }
+                    else if (player.isAttacking()) // we're doing the knife animation
+                    {
+                        deadRobots.Add(e);
+ 
+                    }
+                    else
+                    {
+                        gameState = STATE_GAMEOVER;
+                    }
+                }
             }
-        }       
+            foreach (Robot dead in deadRobots)
+                robots.Remove(dead);
+        }
+
+
+
+        private bool IsColliding(Rectangle rect1, Rectangle rect2)
+        {
+            if (rect1.X + rect1.Width < rect2.X ||
+            rect1.X > rect2.X + rect2.Width ||
+            rect1.Y + rect1.Height < rect2.Y ||
+            rect1.Y > rect2.Y + rect2.Height)
+            {
+                // these two rectangles are not colliding
+                return false;
+            }
+            // else, the two AABB rectangles overlap, therefore collision
+            return true;
+        }
 
 
         protected override void Initialize()
@@ -175,6 +209,8 @@ namespace GroupProject
             {
                 e.Update(deltaTime);
             }
+
+            CheckCollisions();
 
             base.Update(gameTime);
         }
