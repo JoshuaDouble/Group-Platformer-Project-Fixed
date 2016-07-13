@@ -33,7 +33,7 @@ namespace GroupProject
             isFalling = true;
             isJumping = false;
             velocity = Vector2.Zero;
-            
+            sprite.position = new Vector2(100,3100);
 
         }
         public void Load(ContentManager content)
