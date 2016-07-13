@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace GroupProject
 {
@@ -32,13 +33,15 @@ namespace GroupProject
             isFalling = true;
             isJumping = false;
             velocity = Vector2.Zero;
-            
+            
+
         }
         public void Load(ContentManager content)
         {
             AnimatedTexture animation = new AnimatedTexture(new Vector2(0,0), 0, 0.2f, 1);
             animation.Load(content, "soldier", 6, 5);
-            sprite.Add(animation, 0, -25);            sprite.Pause();
+            sprite.Add(animation, 0, -25);
+            sprite.Pause();
 
             AnimatedTexture animation2 = new AnimatedTexture(new Vector2(0, 0), 0, 0.15f, 1);
             animation2.Looping = false;
@@ -89,7 +92,8 @@ namespace GroupProject
             {
                 acceleration.X += Game1.acceleration;
                 sprite.SetFlipped(false);
-                sprite.Play();
+                sprite.Play();
+
             }
             else if (wasMovingRight == true)
             {
@@ -164,7 +168,8 @@ namespace GroupProject
                     // we just hit
                     sprite.position.X = game.TileToPixel(tx);
                     this.velocity.X = 0; // stop horizontal velocity
-                    sprite.Pause();
+                    sprite.Pause();
+
                 }
             }
             else if (this.velocity.X < 0)
@@ -175,7 +180,8 @@ namespace GroupProject
                     // we just hit
                     sprite.position.X = game.TileToPixel(tx + 1);
                     this.velocity.X = 0; // stop horizontal velocity
-                    sprite.Pause();
+                    sprite.Pause();
+
                 }
             }
             // The last calculation for our update() method is to detect if the

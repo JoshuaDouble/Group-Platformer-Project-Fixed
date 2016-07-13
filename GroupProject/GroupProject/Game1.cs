@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Maps.Tiled;
-using MonoGame.Extended.ViewportAdapters;using System;using System.Collections.Generic;
+using MonoGame.Extended.ViewportAdapters;
+using System;
+using System.Collections.Generic;
+
 
 namespace GroupProject
 {
@@ -24,6 +27,9 @@ namespace GroupProject
         TiledTileLayer Collums;
         TiledTileLayer Ladder;
 
+        int score = 4;
+        Texture2D medal = null;
+
         List<Robot> robots = new List<Robot>();
         Sprite goal = null;
 
@@ -41,6 +47,7 @@ namespace GroupProject
         // (a large) instantaneous jump impulse
         public static float jumpImpulse = meter * 1500;
 
+        List<Robot> Robots = new List<Robot>();
 
         public int ScreenWidth
         {
@@ -57,7 +64,8 @@ namespace GroupProject
             }
         }
 
-        
+        
+
 
         public Game1()
         {
@@ -65,12 +73,16 @@ namespace GroupProject
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+        private void CheckCollisions()
+        {
+            bool hasCollidedEnemies = false;
+            foreach (Robot e in Robots)
+            {
+
+            }
+        }       
+
+
         protected override void Initialize()
         {
             player = new Player(this);
@@ -78,16 +90,15 @@ namespace GroupProject
             base.Initialize();
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+        
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player.Load(Content);
+
+            medal = Content.Load<Texture2D>("Medal");
 
             var viewportAdapter = new BoxingViewportAdapter(Window, GraphicsDevice,
             ScreenWidth, ScreenHeight);
@@ -98,11 +109,6 @@ namespace GroupProject
             foreach (TiledTileLayer layer in map.TileLayers)
             {
                 if (layer.Name == "Collisions")
-                    collisionLayer = layer;
-            }
-            foreach (TiledTileLayer layer in map.TileLayers)
-            {
-                if (layer.Name == "ladder")
                     collisionLayer = layer;
             }
 
@@ -131,7 +137,8 @@ namespace GroupProject
                         goal.position = new Vector2(obj.X, obj.Y);
                     }
                 }
-            }
+            }
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -156,7 +163,8 @@ namespace GroupProject
                 Exit();
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            player.Update(deltaTime);
+            player.Update(deltaTime);
+
             camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
 
             foreach (Robot e in robots)
@@ -176,16 +184,26 @@ namespace GroupProject
 
             spriteBatch.Begin(transformMatrix: transformMatrix);
 
-            map.Draw(spriteBatch);            foreach (Robot e in robots)
+            map.Draw(spriteBatch);
+
+            foreach (Robot e in robots)
             {
                 e.Draw(spriteBatch);
             }
 
+        
             player.Draw(spriteBatch);
 
             goal.Draw(spriteBatch);
 
-            spriteBatch.End();
+            for (int i = 0; i < score; i++)
+            {
+                spriteBatch.Draw(medal, new Vector2(10 + i * 10,
+               20), Color.White);
+            }
+
+            spriteBatch.End();
+
 
             base.Draw(gameTime);
         }
@@ -218,15 +236,6 @@ namespace GroupProject
             TiledTile tile = collisionLayer.GetTile(tx, ty);
             return tile.Id;
         }
-        public int CellAtLadderCoord(int tx, int ty)
-        {
-            if (tx < 0 || tx >= map.Width || ty < 0)
-                return 1;
-            // let the player drop of the bottom of the screen (this means death)
-            if (ty >= map.Height)
-                return 0;
-            TiledLadder ladder = collisionLayer.GetTile(tx, ty);
-            return ladder.Id;
-        }
+      
     }
 }
