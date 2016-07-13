@@ -100,6 +100,11 @@ namespace GroupProject
                 if (layer.Name == "Collisions")
                     collisionLayer = layer;
             }
+            foreach (TiledTileLayer layer in map.TileLayers)
+            {
+                if (layer.Name == "ladder")
+                    collisionLayer = layer;
+            }
 
             foreach (TiledObjectGroup group in map.ObjectGroups)
             {
@@ -213,6 +218,15 @@ namespace GroupProject
             TiledTile tile = collisionLayer.GetTile(tx, ty);
             return tile.Id;
         }
-       
+        public int CellAtLadderCoord(int tx, int ty)
+        {
+            if (tx < 0 || tx >= map.Width || ty < 0)
+                return 1;
+            // let the player drop of the bottom of the screen (this means death)
+            if (ty >= map.Height)
+                return 0;
+            TiledLadder ladder = collisionLayer.GetTile(tx, ty);
+            return ladder.Id;
+        }
     }
 }

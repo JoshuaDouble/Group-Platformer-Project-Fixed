@@ -15,6 +15,8 @@ namespace GroupProject
     class goal
     {
         Sprite sprite = new Sprite();
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch;
 
         public void Load(ContentManager content)
         {
