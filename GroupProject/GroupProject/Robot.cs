@@ -48,11 +48,11 @@ namespace GroupProject
                 pause -= deltaTime;
             }
             else {
-                float ddx = 0; // acceleration
+                float ddx = 0; 
                 int tx = game.PixelToTile(Position.X);
                 int ty = game.PixelToTile(Position.Y);
-                bool nx = (Position.X) % Game1.tile != 0; // zombie overlaps right?
-                bool ny = (Position.Y) % Game1.tile != 0; // zombie overlaps below?
+                bool nx = (Position.X) % Game1.tile != 0; 
+                bool ny = (Position.Y) % Game1.tile != 0; 
                 bool cell = game.CellAtTileCoord(tx, ty) != 0;
                 bool cellright = game.CellAtTileCoord(tx + 1, ty) != 0;
                 bool celldown = game.CellAtTileCoord(tx, ty + 1) != 0;
@@ -62,7 +62,7 @@ namespace GroupProject
                 {
                     if (celldiag && !cellright)
                     {
-                        ddx = ddx + robotAcceleration; // zombie wants to go right
+                        ddx = ddx + robotAcceleration; 
                         sprite.SetFlipped(false);
                         sprite.Play();
                     }
@@ -76,7 +76,7 @@ namespace GroupProject
                 {
                     if (celldown && !cell)
                     {
-                        ddx = ddx - robotAcceleration; // zombie wants to go left
+                        ddx = ddx - robotAcceleration; 
                         sprite.SetFlipped(true);
                         sprite.Play();
                     }
