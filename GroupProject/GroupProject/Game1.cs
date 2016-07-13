@@ -31,7 +31,7 @@ namespace GroupProject
         const int STATE_GAME = 1;
         const int STATE_GAMEOVER = 2;
         int gameState = STATE_SPLASH;
-        int score = 4;
+        int score = 0;
         Texture2D medal = null;
 
         List<Robot> robots = new List<Robot>();
@@ -88,11 +88,12 @@ namespace GroupProject
                     {
                         player.JumpOnCollision();
                         deadRobots.Add(e);
+                        score = score + 1;
                     }
                     else if (player.isAttacking()) // we're doing the knife animation
                     {
                         deadRobots.Add(e);
- 
+                        score = score + 1;
                     }
                     else
                     {
