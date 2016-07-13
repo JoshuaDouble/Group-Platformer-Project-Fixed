@@ -211,15 +211,59 @@ namespace GroupProject
                 e.Update(deltaTime);
             }
 
+            switch (gameState)
+            {
+                case STATE_SPLASH:
+                    UpdateSplashState(deltaTime);
+                    break;
+                case STATE_GAME:
+                    UpdateGameState(deltaTime);
+                    break;
+                case STATE_GAMEOVER:
+                    UpdateGameOverState(deltaTime);
+                    break;
+            }
+
             CheckCollisions();
 
             base.Update(gameTime);
         }
 
-      
+        private void UpdateSplashState(float deltaTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter) == true)
+            {
+                gameState = STATE_GAME;
+            }
+        }
+        private void UpdateGameOverState(float deltaTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter) == true)
+            {
+                gameState = STATE_SPLASH;
+
+            }
+        }
+        protected void UpdateGameState(float deltaTime)
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            // TODO: Add your update logic her
+            player.Update(deltaTime);
+            foreach (Robot e in robots)
+            {
+                e.Update(deltaTime);
+            }
+
+            camera.Position = player.Position - new Vector2(ScreenWidth / 2, ScreenHeight / 2);
+
+            CheckCollisions();
+        }
+
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             var transformMatrix = camera.GetViewMatrix();
 
